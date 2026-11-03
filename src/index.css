@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* EBRS showcase: forest sidebar, ivory workspace, terracotta actions */
+  --radius: 0.75rem;
+  --background: #f5f1e9;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --popover: #ffffff;
+  --popover-foreground: #1c1917;
+  --primary: #c65d32;
+  --primary-foreground: #fffaf6;
+  --secondary: #ebe4d8;
+  --secondary-foreground: #2a241e;
+  --muted: #ebe4d8;
+  --muted-foreground: #6f655a;
+  --accent: #f0e6d8;
+  --accent-foreground: #2a241e;
+  --destructive: #b42318;
+  --border: #e2d8c8;
+  --input: #e2d8c8;
+  --ring: #c65d32;
+  --sidebar: #1d3029;
+  --sidebar-foreground: #f3eee5;
+  --sidebar-accent: #2a4339;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #314a40;
+  --sidebar-muted: #a8b5ae;
+  --success: #1f7a4d;
+  --success-soft: #e8f5ee;
+  --danger-soft: #fdeceb;
+  --brand-forest: #1d3029;
+}
+
+@theme inline {
+  --font-sans: "Inter", "Segoe UI", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger-soft: var(--danger-soft);
+  --color-brand-forest: var(--brand-forest);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+}
