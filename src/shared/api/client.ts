@@ -25,7 +25,13 @@ api.interceptors.response.use(
   (error: unknown) => {
     if (!axios.isAxiosError(error)) return Promise.reject(error);
     const url = error.config?.url ?? "";
-    const isCredentialCheck = ["/auth/login", "/auth/register", "/auth/change-password"].some((path) => url.includes(path));
+    const isCredentialCheck = [
+      "/auth/login",
+      "/auth/register",
+      "/auth/change-password",
+      "/auth/forgot-password",
+      "/auth/reset-password",
+    ].some((path) => url.includes(path));
     if (error.response?.status === 401 && !isCredentialCheck) {
       clearToken();
     }

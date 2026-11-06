@@ -15,6 +15,12 @@ export const authService = {
   changePassword(input: { currentPassword: string; newPassword: string }) {
     return sendMessage("/auth/change-password", input);
   },
+  forgotPassword(input: { email: string }) {
+    return sendMessage("/auth/forgot-password", input);
+  },
+  resetPassword(input: { token: string; newPassword: string }) {
+    return sendMessage("/auth/reset-password", input);
+  },
   logout() {
     return sendMessage("/auth/logout");
   },
