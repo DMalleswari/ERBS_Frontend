@@ -29,7 +29,24 @@ export const changePasswordSchema = z
     path: ["confirmPassword"],
   });
 
+export const forgotPasswordSchema = z.object({
+  email: emailSchema,
+});
+
+export const resetPasswordSchema = z
+  .object({
+    token: z.string().min(1, "Reset token is required"),
+    newPassword: strongPasswordSchema,
+    confirmPassword: z.string().min(1, "Confirm your new password"),
+  })
+  .refine((value) => value.newPassword === value.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
 export type LoginValues = z.infer<typeof loginSchema>;
 export type LoginSubmitValues = LoginValues & { remember?: boolean };
 export type RegisterValues = z.infer<typeof registerSchema>;
 export type ChangePasswordValues = z.infer<typeof changePasswordSchema>;
+export type ForgotPasswordValues = z.infer<typeof forgotPasswordSchema>;
+export type ResetPasswordValues = z.infer<typeof resetPasswordSchema>;

@@ -2,7 +2,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 import { useLoginMutation } from "@/features/auth/mutations/use-auth-mutations";
 import { loginSchema, type LoginValues } from "@/features/auth/schemas/auth-schema";
 import { FormField } from "@/shared/components/form-field";
@@ -73,17 +72,9 @@ export function LoginForm() {
           />
           Remember me
         </label>
-        <button
-          type="button"
-          className="font-medium text-primary hover:underline"
-          onClick={() =>
-            toast.message("Password reset is not available in V1", {
-              description: "Sign in, then use Change password — or ask an administrator.",
-            })
-          }
-        >
+        <Link className="font-medium text-primary hover:underline" to="/forgot-password">
           Forgot password?
-        </button>
+        </Link>
       </div>
 
       <Button type="submit" className="h-11 w-full text-base" disabled={login.isPending}>

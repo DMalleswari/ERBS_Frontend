@@ -3,8 +3,10 @@ import { toast } from "sonner";
 import { authService } from "@/features/auth/services/auth-service";
 import type {
   ChangePasswordValues,
+  ForgotPasswordValues,
   LoginSubmitValues,
   RegisterValues,
+  ResetPasswordValues,
 } from "@/features/auth/schemas/auth-schema";
 import { setToken } from "@/shared/api/token";
 import { queryKeys } from "@/shared/constants/query-keys";
@@ -38,6 +40,23 @@ export function useChangePasswordMutation() {
     mutationFn: (input: ChangePasswordValues) =>
       authService.changePassword({
         currentPassword: input.currentPassword,
+        newPassword: input.newPassword,
+      }),
+    onSuccess: (message) => toast.success(message),
+  });
+}
+
+export function useForgotPasswordMutation() {
+  return useMutation({
+    mutationFn: (input: ForgotPasswordValues) => authService.forgotPassword(input),
+  });
+}
+
+export function useResetPasswordMutation() {
+  return useMutation({
+    mutationFn: (input: ResetPasswordValues) =>
+      authService.resetPassword({
+        token: input.token,
         newPassword: input.newPassword,
       }),
     onSuccess: (message) => toast.success(message),

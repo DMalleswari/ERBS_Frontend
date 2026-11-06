@@ -8,10 +8,12 @@ import { BookingFormPage } from "@/pages/booking-form-page";
 import { BookingsPage } from "@/pages/bookings-page";
 import { ChangePasswordPage } from "@/pages/change-password-page";
 import { DashboardPage } from "@/pages/dashboard-page";
+import { ForgotPasswordPage } from "@/pages/forgot-password-page";
 import { LoginPage } from "@/pages/login-page";
 import { NotificationsPage } from "@/pages/notifications-page";
 import { ProfilePage } from "@/pages/profile-page";
 import { RegisterPage } from "@/pages/register-page";
+import { ResetPasswordPage } from "@/pages/reset-password-page";
 import { ResourceDetailPage } from "@/pages/resource-detail-page";
 import { ResourceFormPage } from "@/pages/resource-form-page";
 import { ResourceTypeDetailPage } from "@/pages/resource-type-detail-page";
@@ -32,6 +34,16 @@ export function AppRouter() {
         </Route>
         <Route element={<AuthLayout title="Create account" description="Register to start booking resources" />}>
           <Route path="/register" element={<RegisterPage />} />
+        </Route>
+        <Route
+          element={
+            <AuthLayout title="Forgot password" description="Enter your email and we'll send a reset link" />
+          }
+        >
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        </Route>
+        <Route element={<AuthLayout title="Reset password" description="Choose a new password for your account" />}>
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
         </Route>
       </Route>
       <Route element={<ProtectedRoute />}>
